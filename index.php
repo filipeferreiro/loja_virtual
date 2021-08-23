@@ -25,7 +25,7 @@
                     <div class="menu-left">
                         <span class="logomarca">Logomarca</span>
                         <ul>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>home">Home</a></li>
+                            <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
                             <li><a href="<?php echo INCLUDE_PATH; ?>lancamentos">Lançamentos</a></li>
                             <li id="toggle">
                             <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
@@ -58,7 +58,7 @@
                         <i class="fa fa-bars barras"></i>
                         <div class="menu-mobile-toggle">
                             <ul>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>home"><i class="fas fa-home"></i> Home</a></li>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>"><i class="fas fa-home"></i> Home</a></li>
                                 <li><a href="<?php echo INCLUDE_PATH; ?>lancamentos"><i class="far fa-calendar-plus"></i> Lançamentos</a></li>
                                 <li id="toggle-mobile">
                                     <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
@@ -85,7 +85,7 @@
 
         <div class="container-principal">
             <?php
-                $url = explode('/',@$_GET['url'])[0];
+                $url = isset($_GET['url']) ? $_GET['url'] : 'home';
                 if(file_exists('pages/'.$url.'.php')){
                     include('pages/'.$url.'.php');
                 }else{

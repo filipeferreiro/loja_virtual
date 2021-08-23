@@ -18,8 +18,7 @@
                             <div class="imagem"><img src="images/<?php echo $exibe['ds_capa']; ?>.jpg"></div> <!--ADICIONAR IMAGEM AQUI-->
                             <div class="box-destaques-wraper">
                                 <h3><?php echo $exibe['num_livro']; ?></h3>
-                                <p><?php $str = substr($exibe['ds_resumo_obra'], 0, strpos($exibe['ds_resumo_obra'], "</p>")); echo $str;?></p>
-                                <h3><?php echo $exibe['vl_preco']; ?></h3>
+                                <h4><?php echo $exibe['vl_preco']; ?></h4>
                                 <a href="#">Saiba mais!</a>
                             </div><!--box-destaques-wraper-->
                         </div><!--box-destaques-->
