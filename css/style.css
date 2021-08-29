@@ -314,15 +314,19 @@ section.destaques .box-destaques div.imagem img{
         max-height: 400px;
     }
 }
+@media screen and (max-width: 440px){
+    section.destaques .box-destaques{
+        min-width: auto;
+    }
+}
 section.destaques .box-destaques-wraper {
   padding: 5px 15px 25px 15px;
-  text-align: justify;
 }
 section.destaques .box-destaques-wraper h3 {
   font-size: 20px;
   color: #3d3d3d;
-  font-weight: normal;
   padding-bottom: 8px;
+  font-weight: bold;
 }
 
 section.destaques .box-destaques-wraper h4 {
@@ -334,15 +338,16 @@ font-size: 20px;
 
 section.destaques .box-destaques-wraper a {
   display: block;
-  width: 180px;
+  width: 200px;
   height: 40px;
-  border: 1px solid rgba(88, 88, 88, 0.9);
-  color: rgba(88, 88, 88, 0.9);
+  border: 1px solid #1976d2;
+  color: #1976d2;
+  font-weight: bold;
   text-decoration: none;
   margin-top: 10px;
   padding: 6px 12px;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   line-height: 23px;
   transition: 0.5s;
   position: relative;
@@ -352,8 +357,25 @@ section.destaques .box-destaques-wraper a {
   -ms-transform: translateX(-50%);
 }
 section.destaques .box-destaques-wraper a:hover {
-  background-color: rgba(88, 88, 88, 0.9);
+  background-color: #1976d2;
   color: white;
+}
+section.destaques .box-destaques-wraper a:nth-of-type(2){
+    border: 1px solid #3f51b5;
+    color: #3f51b5;
+}
+section.destaques .box-destaques-wraper a:nth-of-type(2):hover {
+    background-color: #3f51b5;
+    color: white;
+}
+section.destaques .box-destaques-wraper a.btn-indisponivel{
+    border: 1px solid #e53935;
+    background-color: #e53935;
+    color: white;
+}
+section.destaques .box-destaques-wraper a.btn-indisponivel:hover{
+    background-color: #e53935;
+    color: white;
 }
 footer {
   background-color: #f0f0f0;

@@ -1,6 +1,6 @@
 <?php 
     include('config.php'); 
-    $consulta = $pdo->query('SELECT * FROM vw_livro');
+    $consulta = $pdo->query('SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro');
 
     
 ?>
@@ -11,12 +11,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="author" content="Filipe Ferreiro">
-        <meta name="description" content="Loja virtual para a venda de produtos">
-        <meta name="keywords" content="HTML, CSS, PHP, Less, JQuery, Javascript, Loja virtual, comércio, vendas">
+        <meta name="description" content="Loja virtual para a venda de livros online">
+        <meta name="keywords" content="HTML, CSS, PHP, Less, JQuery, Javascript, Loja virtual, comércio, vendas, livros, online, livros online, comprar livros, venda de livros, livraria, ecommerce">
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
         <link href="<?php echo INCLUDE_PATH; ?>css/all.min.css" rel="stylesheet">
         <link href="<?php echo INCLUDE_PATH; ?>css/style.css" rel="stylesheet">
-        <title>Loja virtual</title>
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <title>Filipinho livros | Livraria online</title>
     </head>
     <body>
         <header>
@@ -25,10 +26,10 @@
                     <div class="menu-left">
                         <span class="logomarca">Logomarca</span>
                         <ul>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>lancamentos">Lançamentos</a></li>
+                            <li><a title="Home" href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
+                            <li><a title="Lançamentos" href="<?php echo INCLUDE_PATH; ?>lancamentos">Lançamentos</a></li>
                             <li id="toggle">
-                            <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                            <a title="Categorias" href="#">Categorias <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="<?php echo INCLUDE_PATH; ?>design">Design</a></li>
                                     <li><a href="<?php echo INCLUDE_PATH; ?>infra-estrutura">Infra-Estrutura</a></li>
@@ -42,7 +43,7 @@
 
                     <div class="menu-right">
                         <ul>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
+                            <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                             <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </div><!--menu-right-->
@@ -58,10 +59,10 @@
                         <i class="fa fa-bars barras"></i>
                         <div class="menu-mobile-toggle">
                             <ul>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>"><i class="fas fa-home"></i> Home</a></li>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>lancamentos"><i class="far fa-calendar-plus"></i> Lançamentos</a></li>
+                                <li><a title="Home" href="<?php echo INCLUDE_PATH; ?>"><i class="fas fa-home"></i> Home</a></li>
+                                <li><a title="Lançamentos" href="<?php echo INCLUDE_PATH; ?>lancamentos"><i class="far fa-calendar-plus"></i> Lançamentos</a></li>
                                 <li id="toggle-mobile">
-                                    <a href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                                    <a title="Categorias" href="#">Categorias <i class="fas fa-chevron-down"></i></a>
                                     <ul>
                                         <li><a href="<?php echo INCLUDE_PATH; ?>design">Design</a></li>
                                         <li><a href="<?php echo INCLUDE_PATH; ?>infra-estrutura">Infra-Estrutura</a></li>
@@ -74,7 +75,7 @@
                                     <i class="fa fa-search"></i>
                                     <form><input type="text"></form>
                                 </div><!--menu-pesquisa-mobile-->
-                                <li><a href="<?php echo INCLUDE_PATH; ?>contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
+                                <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
                                 <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                             </ul>
                         </div><!--menu-mobile-top-->
