@@ -1,12 +1,15 @@
-<?php 
-    $lancamento = $pdo->query("SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro WHERE sg_lancamento = 'S'");
+<?php
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $url = explode('?',$url)[1];
+    
+    $consulta_cat = $pdo->query("SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro WHERE ds_categoria = '$url'");
 ?>
 
 <section class="destaques">
     <div class="container">
-    <h2>Lançamentos</h2>
+    <h2><?php echo $url?></h2>
         <div class="flex-destaques">
-            <?php while($exibe = $lancamento->fetch(PDO::FETCH_ASSOC)){ ?>
+            <?php while($exibe = $consulta_cat->fetch(PDO::FETCH_ASSOC)){ ?>
                 <div class="space-destaques">
                     <div class="box-destaques">
                         <div class="imagem"><img alt="<?php echo $exibe['ds_capa']; ?>" src="images/<?php echo $exibe['ds_capa']; ?>.jpg"></div> <!--ADICIONAR IMAGEM AQUI-->

@@ -1,8 +1,8 @@
 <?php 
     include('config.php'); 
     $consulta = $pdo->query('SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro');
-
-    
+    $categorias = $pdo->query('SELECT ds_categoria FROM tb_categoria');
+    $valorCat = $categorias->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,13 +29,13 @@
                             <li><a title="Home" href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
                             <li><a title="Lançamentos" href="<?php echo INCLUDE_PATH; ?>lancamentos">Lançamentos</a></li>
                             <li id="toggle">
-                            <a title="Categorias" href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                            <a title="Categorias">Categorias <i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="<?php echo INCLUDE_PATH; ?>design">Design</a></li>
-                                    <li><a href="<?php echo INCLUDE_PATH; ?>infra-estrutura">Infra-Estrutura</a></li>
-                                    <li><a href="<?php echo INCLUDE_PATH; ?>dados">Dados</a></li>
-                                    <li><a href="<?php echo INCLUDE_PATH; ?>front-end">Front End</a></li>
-                                    <li><a href="<?php echo INCLUDE_PATH; ?>mobile">Mobile</a></li>
+                                    <?php 
+                                    foreach ($valorCat as $key => $value) {
+                                    ?>
+                                    <li><a href="<?php echo INCLUDE_PATH_CAT; ?>?<?php echo $value['ds_categoria']?>"><?php echo $value['ds_categoria']?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li><!--toggle-->
                         </ul>
@@ -44,7 +44,7 @@
                     <div class="menu-right">
                         <ul>
                             <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
-                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-out-alt"></i> Login</a></li>
                         </ul>
                     </div><!--menu-right-->
 
@@ -62,13 +62,13 @@
                                 <li><a title="Home" href="<?php echo INCLUDE_PATH; ?>"><i class="fas fa-home"></i> Home</a></li>
                                 <li><a title="Lançamentos" href="<?php echo INCLUDE_PATH; ?>lancamentos"><i class="far fa-calendar-plus"></i> Lançamentos</a></li>
                                 <li id="toggle-mobile">
-                                    <a title="Categorias" href="#">Categorias <i class="fas fa-chevron-down"></i></a>
+                                    <a title="Categorias">Categorias <i class="fas fa-chevron-down"></i></a>
                                     <ul>
-                                        <li><a href="<?php echo INCLUDE_PATH; ?>design">Design</a></li>
-                                        <li><a href="<?php echo INCLUDE_PATH; ?>infra-estrutura">Infra-Estrutura</a></li>
-                                        <li><a href="<?php echo INCLUDE_PATH; ?>dados">Dados</a></li>
-                                        <li><a href="<?php echo INCLUDE_PATH; ?>front-end">Front End</a></li>
-                                        <li><a href="<?php echo INCLUDE_PATH; ?>mobile">Mobile</a></li>
+                                        <?php 
+                                        foreach ($valorCat as $key => $value) {
+                                        ?>
+                                        <li><a href="<?php echo INCLUDE_PATH_CAT; ?>?<?php echo $value['ds_categoria']?>"><?php echo $value['ds_categoria']?></a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li><!--toggle-mobile-->
                                 <div class="menu-pesquisa-mobile">
@@ -76,7 +76,7 @@
                                     <form><input type="text"></form>
                                 </div><!--menu-pesquisa-mobile-->
                                 <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
-                                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-out-alt"></i> Login</a></li>
                             </ul>
                         </div><!--menu-mobile-top-->
                     <div class="clear"></div>
@@ -101,7 +101,7 @@
             ?>
         </div><!--container-principal-->
 
-        <footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed"'; ?>>
+        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login') echo 'class="fixed"'; ?>>
             <div class="container">
                 <p>R. Guaipá, 678 - Vila Leopoldina, São Paulo - SP, 05089-000</p>
                 <h3>Todos os direitos reservados &copy; <b>Filipinho Inc.</b></h3>

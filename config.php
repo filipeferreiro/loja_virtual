@@ -9,4 +9,5 @@
 				
 
     define('INCLUDE_PATH','https://localhost/PW_II/loja_virtual/');
+    define('INCLUDE_PATH_CAT','https://localhost/PW_II/loja_virtual/categorias');
 ?>
