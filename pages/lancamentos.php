@@ -1,7 +1,6 @@
 <?php 
     $lancamento = $pdo->query("SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro WHERE sg_lancamento = 'S'");
 ?>
-
 <section class="destaques">
     <div class="container">
     <h2>Lançamentos</h2>
