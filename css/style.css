@@ -51,7 +51,7 @@ header {
 header .menu-desktop {
   display: block;
 }
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 965px) {
   header .menu-desktop {
     display: none;
   }
@@ -141,7 +141,7 @@ header .menu-desktop .menu-right a:hover {
 header .menu-mobile {
   display: none;
 }
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 965px) {
   header .menu-mobile {
     display: block;
   }
@@ -519,4 +519,33 @@ section.login .form-wraper .input-wraper:last-of-type{
     color: #1e88e5;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* box de erro e sucesso */
+
+.box-alert{
+	width: 100%;
+	padding:8px 0;
+	text-align: center;
+    margin: 8px 0;
+}
+
+.box-alert a{
+    color: white;
+    font-weight: bold;
+}
+
+.sucesso{
+	background: #81c784;
+	color: white;
+}
+
+.erro{
+	background: #F75353;
+	color: white;
+}
+
+.atencao{
+    background: #fbc02d;
+	color: white;
 }

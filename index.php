@@ -1,4 +1,6 @@
 <?php 
+    ob_start();
+    session_start();
     include('config.php'); 
     $consulta = $pdo->query('SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro');
     $categorias = $pdo->query('SELECT ds_categoria FROM tb_categoria');
@@ -44,7 +46,16 @@
                     <div class="menu-right">
                         <ul>
                             <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-out-alt"></i> Login</a></li>
+                            <?php if(isset($_SESSION['ID']) == ''){?>
+                            <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                            <?php }else{
+                                $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
+                                $usuario_login->execute(array($_SESSION['ID']));
+                                $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
+                            ?>
+                            <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
+                            <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                            <?php } ?>
                         </ul>
                     </div><!--menu-right-->
 
@@ -76,7 +87,16 @@
                                     <form><input type="text"></form>
                                 </div><!--menu-pesquisa-mobile-->
                                 <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-out-alt"></i> Login</a></li>
+                                <?php if(isset($_SESSION['ID']) == ''){?>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                                <?php }else{
+                                    $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
+                                    $usuario_login->execute(array($_SESSION['ID']));
+                                    $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                <?php } ?>
                             </ul>
                         </div><!--menu-mobile-top-->
                     <div class="clear"></div>
@@ -113,3 +133,4 @@
         <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
     </body>
 </html>
+<?php ob_end_flush(); ?>
