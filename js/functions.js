@@ -11,4 +11,7 @@ $( () =>{
         $(this).parent().find('#toggle-mobile > ul').toggle(700);
     });
 
+    $('#cep').mask('00000-000');
+
+    //$('#celular').mask('(00) 00000-0000');
 });

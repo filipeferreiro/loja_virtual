@@ -9,8 +9,15 @@
                     $sql->execute(array($email,$senha));
                     if($sql->rowCount() == 1){
                         $exibeUsuario = $sql->fetch(PDO::FETCH_ASSOC);
-                        $_SESSION['ID'] = $exibeUsuario['cod_usuario'];
-                        header('Location: '.INCLUDE_PATH);
+                        if($exibeUsuario['status_usuario'] == 0){
+                            $_SESSION['ID'] = $exibeUsuario['cod_usuario'];
+                            $_SESSION['status'] = 0;
+                            header('Location: '.INCLUDE_PATH);
+                        }else{
+                            $_SESSION['ID'] = $exibeUsuario['cod_usuario'];
+                            $_SESSION['status'] = 1;
+                            header('Location: '.INCLUDE_PATH);
+                        }
                     } else{
                         echo '<div class="box-alert erro"><i class="fa fa-times"></i> Email ou Senha inválidos, tente novamente </div>';
                     }
@@ -28,7 +35,7 @@
                 </div><!--input-wraper-->
                 <div class="input-wraper">
                     <input type="submit" name="acao" value="Entrar">
-                    <p>Ainda não é um membro? <a href="#">Cadastre-se</a></p>
+                    <p>Ainda não é um membro? <a href="<?php INCLUDE_PATH; ?>cadastrar">Cadastre-se</a></p>
                 </div><!--input-wraper--> 
             </form>
         </div><!--form-wraper-->

@@ -2,7 +2,7 @@
     ob_start();
     session_start();
     include('config.php'); 
-    $consulta = $pdo->query('SELECT num_livro,vl_preco,ds_capa,qt_estoque FROM vw_livro');
+    $consulta = $pdo->query('SELECT * FROM vw_livro');
     $categorias = $pdo->query('SELECT ds_categoria FROM tb_categoria');
     $valorCat = $categorias->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -47,15 +47,19 @@
                         <ul>
                             <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                             <?php if(isset($_SESSION['ID']) == ''){?>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                            <?php }else{
-                                $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
-                                $usuario_login->execute(array($_SESSION['ID']));
-                                $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
-                            ?>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
-                            <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-                            <?php } ?>
+                                <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                                <?php }else{
+                                    if($_SESSION['status'] == 0){
+                                        $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
+                                        $usuario_login->execute(array($_SESSION['ID']));
+                                        $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                <?php } else { ?>
+                                    <li><a style="color: #1976d2;" href="<?php echo INCLUDE_PATH; ?>conta"><i style="color: #1976d2;" class="fas fa-user"></i> Administrador</a></li>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                <?php } } ?>
                         </ul>
                     </div><!--menu-right-->
 
@@ -90,13 +94,17 @@
                                 <?php if(isset($_SESSION['ID']) == ''){?>
                                 <li><a href="<?php echo INCLUDE_PATH; ?>login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                                 <?php }else{
-                                    $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
-                                    $usuario_login->execute(array($_SESSION['ID']));
-                                    $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
+                                    if($_SESSION['status'] == 0){
+                                        $usuario_login = $pdo->prepare("SELECT nome_usuario FROM `tb_usuarios` WHERE cod_usuario = ?");
+                                        $usuario_login->execute(array($_SESSION['ID']));
+                                        $exibe_usuario = $usuario_login->fetch(PDO::FETCH_ASSOC);
                                 ?>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
-                                <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-                                <?php } ?>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>conta"><i class="fas fa-user"></i> <?php echo $exibe_usuario['nome_usuario']; ?></a></li>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                <?php } else { ?>
+                                    <li><a style="color: #1976d2;" href="<?php echo INCLUDE_PATH; ?>conta"><i style="color: #1976d2;" class="fas fa-user"></i> Administrador</a></li>
+                                    <li><a href="<?php echo INCLUDE_PATH; ?>logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                <?php } } ?>
                             </ul>
                         </div><!--menu-mobile-top-->
                     <div class="clear"></div>
@@ -121,7 +129,7 @@
             ?>
         </div><!--container-principal-->
 
-        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login') echo 'class="fixed"'; ?>>
+        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single') echo 'class="fixed"'; ?>>
             <div class="container">
                 <p>R. Guaipá, 678 - Vila Leopoldina, São Paulo - SP, 05089-000</p>
                 <h3>Todos os direitos reservados &copy; <b>Filipinho Inc.</b></h3>
@@ -131,6 +139,7 @@
 
         <script src="<?php echo INCLUDE_PATH; ?>js/jquery.js"></script>
         <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
+        <script src="<?php echo INCLUDE_PATH; ?>js/jquery.mask.js"></script>
     </body>
 </html>
 <?php ob_end_flush(); ?>

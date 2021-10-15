@@ -19,7 +19,7 @@
                             <div class="box-destaques-wraper">
                                 <h3><?php echo mb_strimwidth($exibe['num_livro'],0,50,'...'); ?></h3>
                                 <h4>R$<?php echo number_format($exibe['vl_preco'],2,',','.'); ?></h4>
-                                <a href="#">Saiba mais!</a>
+                                <a href="<?php echo INCLUDE_PATH; ?>produto-single?prod=<?php echo $exibe['cod_livro'];?>">Saiba mais!</a>
                                 <?php 
                                     if($exibe['qt_estoque'] == 0){
                                         echo '<a disabled class="btn-indisponivel"><i class="far fa-times-circle"></i> indisponivel</a>';
