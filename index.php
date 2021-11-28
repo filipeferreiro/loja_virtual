@@ -1,10 +1,12 @@
 <?php 
     ob_start();
     session_start();
-    include('config.php'); 
-    $consulta = $pdo->query('SELECT * FROM vw_livro');
-    $categorias = $pdo->query('SELECT ds_categoria FROM tb_categoria');
+    include('config.php');
+    $consulta = $pdo->query('SELECT * FROM `vw_livro`');
+    $categorias = $pdo->query('SELECT * FROM `tb_categoria`');
     $valorCat = $categorias->fetchAll(PDO::FETCH_ASSOC);
+    $autores = $pdo->query('SELECT * FROM `tb_autor`');
+    $valorAut = $autores->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
         <link href="<?php echo INCLUDE_PATH; ?>css/all.min.css" rel="stylesheet">
         <link href="<?php echo INCLUDE_PATH; ?>css/style.css" rel="stylesheet">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="<?php echo INCLUDE_PATH; ?>images/favicon.ico" type="image/x-icon">
         <title>Filipinho livros | Livraria online</title>
     </head>
     <body>
@@ -65,7 +67,7 @@
 
                     <div class="menu-pesquisa">
                         <i class="fa fa-search"></i>
-                        <form><input type="text"></form>
+                        <form action="<?php echo INCLUDE_PATH ?>pesquisa" method="get"><input type="text" name="pesquisar"></form> 
                     </div><!--menu-pesquisa-->
                 </nav><!--menu-desktop-->
 
@@ -88,7 +90,7 @@
                                 </li><!--toggle-mobile-->
                                 <div class="menu-pesquisa-mobile">
                                     <i class="fa fa-search"></i>
-                                    <form><input type="text"></form>
+                                    <form action="<?php echo INCLUDE_PATH ?>pesquisa" method="get"><input type="text" name="pesquisar"></form> 
                                 </div><!--menu-pesquisa-mobile-->
                                 <li><a title="Contato" href="<?php echo INCLUDE_PATH; ?>contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
                                 <?php if(isset($_SESSION['ID']) == ''){?>
@@ -125,11 +127,15 @@
                         include('pages/home.php');
                     }
                 }
+                if(file_exists('pages/conta/'.$url.'.php')){
+                    include('pages/conta/'.$url.'.php');
+                }
+                
 
             ?>
         </div><!--container-principal-->
 
-        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single') echo 'class="fixed"'; ?>>
+        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single' || $url == 'conta') echo 'class="fixed"'; ?>>
             <div class="container">
                 <p>R. Guaipá, 678 - Vila Leopoldina, São Paulo - SP, 05089-000</p>
                 <h3>Todos os direitos reservados &copy; <b>Filipinho Inc.</b></h3>
