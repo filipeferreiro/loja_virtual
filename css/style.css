@@ -302,7 +302,6 @@ section.destaques .box-destaques:hover {
 }
 section.destaques .box-destaques div.imagem {
   width: 100%;
-  
 }
 section.destaques .box-destaques div.imagem img{
     width: 100%;
@@ -620,6 +619,10 @@ section.produto-single .container{
     max-width: 1200px;
 }
 
+section.produto-single .imagem-produto img{
+    max-width: 400px;
+}
+
 @media screen and (max-width:768px){
     section.produto-single .container{
         grid-template-columns: 100%;
@@ -738,4 +741,155 @@ section.conta .links-adm input{
     margin: 10px auto;
     padding: 8px 6px;
     font-size: 15px;
+}
+
+section.gerenciar .container{
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+section.gerenciar h2{
+    color: #3d3d3d;
+    margin-bottom: 20px;
+}
+
+section.editar h2{
+    color: #3d3d3d;
+    margin: 20px;
+}
+
+/* tabela dos livros */ 
+
+.wraper-table{
+	overflow-x: auto;
+}
+
+table{
+	font-weight: 300;
+	min-width: 900px;
+	margin:20px 0;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table tr:nth-of-type(1){
+	background: #1976d2;
+	color: white;
+}
+
+table tr{
+	border-bottom: 1px solid #ccc;
+    color: #555;
+}
+
+table td{
+	padding: 8px;
+}
+
+table a.btn{
+	font-weight: normal;
+	font-size: 13px;
+	color: white;
+	text-decoration: none;
+	padding: 4px 6px;
+}
+
+a.btn{
+    font-weight: normal;
+	font-size: 13px;
+	color: white;
+	text-decoration: none;
+	padding: 4px 6px;
+}
+
+a.btn.edit{background: #F4B03E;}
+a.btn.delete{background: #E05C4E;}
+
+/*Formulários de contato do box-content*/
+
+.box-content form{
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.box-content form label{
+	font-size: 17px;
+	font-weight: 300;
+	color: black;
+	display: block;
+}
+
+.box-content .form-group{
+	margin:15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.box-content form input[type=text],
+.box-content form input[type=password]
+{
+	margin-top:8px;
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding-left: 8px;
+}
+
+.box-content form textarea{
+	margin-top:8px;
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	width: 100%;
+	height: 150px;
+	border: 1px solid #ccc;
+	padding: 8px;
+	resize: vertical;
+    min-height: 300px;
+    max-height: 1000px;
+}
+
+.box-content form select{
+	margin-top:8px;
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding-left: 8px;
+}
+
+.box-content form input[type=number]{
+    margin-top:8px;
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	width: 20%;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding-left: 8px;
+}
+
+.box-content form input[type=file]{
+	margin-top:8px;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+}
+
+.box-content form input[type=submit]{
+	width: auto;
+    padding: 0 5px;
+	height: 40px;
+	cursor: pointer;
+	margin-top: 10px;
+	font-size: 16px;
+	background: #00bfa5;
+	color: white;
+	border: 0;
 }

@@ -114,7 +114,7 @@
             </div><!--container-->
         </header>
 
-        <div class="container-principal">
+        <main class="container-principal">
             <?php
                 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
                 if(file_exists('pages/'.$url.'.php')){
@@ -133,7 +133,7 @@
                 
 
             ?>
-        </div><!--container-principal-->
+        </main><!--container-principal-->
 
         <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single' || $url == 'conta') echo 'class="fixed"'; ?>>
             <div class="container">

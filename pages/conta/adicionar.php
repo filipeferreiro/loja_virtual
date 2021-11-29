@@ -14,7 +14,6 @@
                     $resumo = $_POST['resumo'];
                     $foto = $_FILES['foto'];
                     $lancamento = $_POST['lancamento'];
-                    print_r($foto);
                     $remover1='.';  // criando variável e atribuindo o valor de ponto para ela
                     $preco = str_replace($remover1, '', $preco); // removendo ponto de casa decimal,substituindo por vazio
                     $remover2=','; // criando variável e atribuindo o valor de virgula para ela
@@ -34,21 +33,6 @@
                         } else{
                             echo '<div class="box-alert erro"><i class="fa fa-times"></i> A imagem não é válida!</div>';
                         }
-                    /*$verEmail = $pdo->query("SELECT email_usuario FROM `tb_usuarios` WHERE email_usuario = '$email' ");
-                    $executa = $verEmail->fetch(PDO::FETCH_ASSOC);
-
-                    if($nome == '' || $email == '' || $senha == '' || $endereco == '' || $cidade == '' || $cep == ''){
-                        echo '<div class="box-alert erro"><i class="fa fa-times"></i> Todos os campos devem ser preenchidos!</div>';
-                    }else if($verEmail->rowCount() == 1){
-                        echo '<div class="box-alert erro"><i class="fa fa-times"></i> E-mail já cadastrado!</div>';
-                    } else{
-                        $sql = $pdo->prepare("INSERT INTO `tb_usuarios` VALUES(null,?,?,?,?,?,?,?)");
-                        $sql->execute(array($nome,$email,$senha,0,$endereco,$cidade,$cep));
-                        echo '<script>
-                            alert("Conta criada com sucesso, faça seu login!");
-                            window.location.href = "'.INCLUDE_PATH.'/login";
-                        </script>';
-                    }*/
                 }
             ?>
             <h2>Faça o seu Cadastro</h2>

@@ -10,7 +10,7 @@ if(isset($_GET['prod'])){
 <section class="produto-single">
     <div class="container">
         <div class="imagem-produto">
-            <img src="<?php echo INCLUDE_PATH.'images/'.$exibeLivro['ds_capa'].'.jpg'; ?>">
+            <img src="<?php echo INCLUDE_PATH.'images/'.$exibeLivro['ds_capa']; ?>">
         </div><!--imagem-produto-->
         <div class="descricao-produto">
             <h2><?php echo $exibeLivro['num_livro']; ?></h2>
