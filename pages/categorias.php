@@ -7,7 +7,7 @@
 
 <section class="destaques">
     <div class="container">
-    <h2><?php echo $url?></h2>
+    <h2><?php echo $url; ?></h2>
         <div class="flex-destaques">
             <?php while($exibe = $consulta_cat->fetch(PDO::FETCH_ASSOC)){ ?>
                 <div class="space-destaques">
@@ -21,7 +21,7 @@
                                 if($exibe['qt_estoque'] == 0){
                                     echo '<a disabled class="btn-indisponivel"><i class="far fa-times-circle"></i> indisponivel</a>';
                                 }else{
-                                    echo '<a href="#">Comprar</a>';
+                                    echo '<a href="'.INCLUDE_PATH.'carrinho?addCart='.$exibe['cod_livro'].'">Comprar</a>';
                                 }
                             ?>
                         </div><!--box-destaques-wraper-->

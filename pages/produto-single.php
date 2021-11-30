@@ -24,7 +24,7 @@ if(isset($_GET['prod'])){
             ?>
                 <a disabled class="btn-indisponivel"><i class="far fa-times-circle"></i> indisponivel</a>
             <?php }else{ ?>
-                <a class="compra" href="#">Comprar</a>
+                <a class="compra" href="<?php echo INCLUDE_PATH?>carrinho?id=<?php echo $exibeLivro['cod_livro']; ?>">Comprar</a>
             <?php } ?>
         </div><!--descricao-produto-->
     </div><!--container-->

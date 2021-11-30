@@ -135,7 +135,7 @@
             ?>
         </main><!--container-principal-->
 
-        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single' || $url == 'conta') echo 'class="fixed"'; ?>>
+        <footer <?php if(isset($pagina404) && $pagina404 == true || $url == 'login' || $url == 'produto-single' || $url == 'conta' || $url == 'carrinho') echo 'class="fixed"'; ?>>
             <div class="container">
                 <p>R. Guaipá, 678 - Vila Leopoldina, São Paulo - SP, 05089-000</p>
                 <h3>Todos os direitos reservados &copy; <b>Filipinho Inc.</b></h3>

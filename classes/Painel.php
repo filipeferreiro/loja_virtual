@@ -120,5 +120,23 @@
 			}
 			return $certo;
 		}
+
+        public static function getTotalItemsCarrinho(){
+            if(isset($_SESSION['carrinho'])){
+                $quantidade = 0;
+                foreach ($_SESSION['carrinho'] as $key => $value) {
+                    $quantidade+=$value;
+                }
+            }else{
+                return 0;
+            }
+            return $quantidade;
+        }
+
+        public static function formatarMoedaBd($valor){
+            $valor = str_replace('.','',$valor);
+            $valor = str_replace(',','.',$valor);
+            return $valor;
+        }
     }
 ?>

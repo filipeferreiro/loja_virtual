@@ -31,11 +31,20 @@
             </form>
         </div><!--conta-content-->
     <?php
-            } else{
-                // se a conta não for de um administrador
-                echo '<h2 class="validacao"> <i class="fas fa-user-slash"></i> <br> Você não é um administrador! <br> Volte para a  <a href="'.$caminho.'">página inicial</a>. <br>A página para usuários ainda não foi feita! <h2>';
-            }
-        }
+            } else if($_SESSION['status'] == 0){
+                if(isset($_GET['carrinho'])){
+                    header('Location: '.INCLUDE_PATH.'carrinho');
+                }
     ?>
+        <div class="conta-content">
+            <h2>Bem-vindo, <?php echo $exibe_usuario['nome_usuario']; ?>!</h2>
+            <h3>Faça o gerenciamento da sua conta nos menus abaixo: </h3>
+            <form method="get">
+                <div class="links-adm">
+                    <input type="submit" name="carrinho" value="Carrinho">
+                </div><!--links-adm-->
+            </form>
+        </div><!--conta-content-->
+    <?php }} ?>
     </div><!--container-->
 </section><!--conta-->

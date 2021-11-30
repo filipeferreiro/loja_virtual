@@ -24,7 +24,7 @@
                                     if($exibe['qt_estoque'] == 0){
                                         echo '<a disabled class="btn-indisponivel"><i class="far fa-times-circle"></i> indisponivel</a>';
                                     }else{
-                                        echo '<a href="#">Comprar</a>';
+                                        echo '<a href="'.INCLUDE_PATH.'carrinho?addCart='.$exibe['cod_livro'].'">Comprar</a>';
                                     }
                                 ?>
                             </div><!--box-destaques-wraper-->
