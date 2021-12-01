@@ -138,5 +138,9 @@
             $valor = str_replace(',','.',$valor);
             return $valor;
         }
+
+        public static function convertMoney($valor){
+            return number_format($valor,2,',','.');
+        }
     }
 ?>

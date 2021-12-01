@@ -903,3 +903,12 @@ section.carrinho h2{
     color: #3d3d3d;
     font-size: 22px;
 }
+
+section.carrinho .comprar{
+    margin: 90px auto 10px auto;
+    text-align: center;
+}
+
+section.carrinho .comprar input[type=submit]{
+    padding: 4px 4px;
+}

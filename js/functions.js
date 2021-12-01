@@ -15,4 +15,17 @@ $( () =>{
 
     $('#preco').mask('R$ #.##0,00', {reverse: true});
 
+    $("#quantidade").bind('keyup change input',function(){
+        sendRequest();
+    })
+
+    function sendRequest(){
+        $('form').ajaxSubmit({
+            data:{'quantidade':$('select#quantidade').val(),
+                'valor':$('input[name=valor]').val()},
+            success:function(data){
+                $('.carrinho .container').html(data);
+            }
+        });
+    };
 });
